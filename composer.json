@@ -10,8 +10,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "WebWhales",
-            "email": "yefri@th3cod3.com",
+            "name": "Th3Cod3",
+            "email": "yefri.gonzalez@webwhales.nl",
             "role": "Developer"
         }
     ],
@@ -22,16 +22,15 @@
         "spatie/laravel-permission": "*"
     },
     "require-dev": {
-        "laravel/pint": "^1.0",
         "nunomaduro/collision": "^7.8",
-        "nunomaduro/larastan": "^2.0.1",
         "orchestra/testbench": "^8.8",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-arch": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0"
+        "phpstan/phpstan-phpunit": "^1.0",
+        "webwhales/code-quality-tools": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -56,10 +55,9 @@
             "@composer run build",
             "@php vendor/bin/testbench serve"
         ],
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/pint"
+        "analyse": "phpstan analyse",
+        "test": "pest",
+        "format": "pint --config vendor/webwhales/code-quality-tools/pint.json"
     },
     "config": {
         "sort-packages": true,
@@ -76,5 +74,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "code-quality-tools": {
+            "type": "github",
+            "url": "https://github.com/WebWhales/Code-Quality-Tools"
+        }
+    }
 }

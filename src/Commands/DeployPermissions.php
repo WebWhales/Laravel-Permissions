@@ -18,17 +18,17 @@ class DeployPermissions extends Command
 
         $this->info('Deploying roles and permissions...');
 
-        match(config('permission.deploy-type')) {
-            'permissions-only' => $this->deployPermissionsOnly($rolesAndPermissions),
+        match (config('permission.deploy-type')) {
+            'permissions-only'      => $this->deployPermissionsOnly($rolesAndPermissions),
             'roles-and-permissions' => $this->deployRolesAndPermissions($rolesAndPermissions),
-            default => $this->error('The deploy type is not valid. current: ' . config('permission.deploy-type')),
+            default                 => $this->error('The deploy type is not valid. current: ' . config('permission.deploy-type')),
         };
 
         return self::SUCCESS;
     }
 
     /**
-     * @param  array<int, string>  $permissions
+     * @param array<int, string> $permissions
      */
     private function deployPermissionsOnly(array $permissions): void
     {
@@ -38,12 +38,12 @@ class DeployPermissions extends Command
     }
 
     /**
-     * @param  array<string, array<string, array<string>>>  $rolesAndPermissions
+     * @param array<string, array<string, array<string>>> $rolesAndPermissions
      */
     private function deployRolesAndPermissions(array $rolesAndPermissions): void
     {
         foreach ($rolesAndPermissions as $role => $permissions) {
-            $role = Role::firstOrCreate(['name' => $role]);
+            $role        = Role::firstOrCreate(['name' => $role]);
             $permissions = collect();
 
             foreach ($permissions as $model => $action) {

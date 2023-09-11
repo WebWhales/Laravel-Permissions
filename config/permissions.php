@@ -9,7 +9,7 @@
  *     'model|section' => [
  *        'action',
  *    ]
- * ]
+ * ].
  *
  * - deploy-type: permissions-only
  * array<int, string>

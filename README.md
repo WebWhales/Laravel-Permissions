@@ -5,8 +5,8 @@
 You can install the package via composer:
 
 ```bash
-composer config repositories.permissions github https://github.com/WebWhales/Laravel-Permissions
-composer require webwhales/permissions:dev-master
+composer config repositories.laravel-permissions github https://github.com/WebWhales/Laravel-Permissions
+composer require webwhales/laravel-permissions:dev-master
 ```
 
 You can publish the config file with:

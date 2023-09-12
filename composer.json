@@ -69,7 +69,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "WebWhales\\Permissions\\PermissionsServiceProvider"
+                "WebWhales\\Permissions\\ServiceProvider"
             ]
         }
     },

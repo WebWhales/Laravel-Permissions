@@ -44,13 +44,15 @@ class DeployPermissions extends Command
     {
         foreach ($rolesAndPermissions as $role => $permissions) {
             $role        = Role::firstOrCreate(['name' => $role]);
-            $permissions = collect();
+            $permissionsQueue = collect();
 
-            foreach ($permissions as $model => $action) {
-                $permission[] = Permission::firstOrCreate(['name' => "$model.$action"]);
+            foreach ($permissions as $model => $actions) {
+                foreach ($actions as $action) {
+                    $permissionsQueue[] = Permission::firstOrCreate(['name' => "$model.$action"]);
+                }
             }
 
-            $role->syncPermissions($permissions);
+            $role->syncPermissions($permissionsQueue);
         }
     }
 
